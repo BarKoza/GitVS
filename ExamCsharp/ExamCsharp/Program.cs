@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace ExamCsharp
 {
+
+    //Je n'ai pas reussi les deux dernières questions de la 4 (ainsi que la differentiation des erreurs de saisie) et je n'ai pas eu le temps de me pencher sur la 6.
     class Program
     {
         static void Main(string[] args)
@@ -77,6 +79,7 @@ namespace ExamCsharp
 
         public static string CreerMessage(Ville v)
         {
+            //création du message
             string result;
 
             result = "Nom : " + v.nom + ", Code Postal: " + v.cp + "\nNombre d'habitants: " + v.habitans + "\n---------------------";
@@ -90,6 +93,7 @@ namespace ExamCsharp
             string entree;
             entree = Console.ReadLine();
             int Valeur;
+            //conversion string en int
             while (!int.TryParse(entree, out Valeur) || Valeur <= 0)
             {
                 Console.WriteLine("Saisie Incorrecte");
@@ -103,6 +107,7 @@ namespace ExamCsharp
             Console.WriteLine(message);
             string entree;
             entree = Console.ReadLine();
+            //verif si la saisie n'est pas vide
             while (String.IsNullOrEmpty(entree))
             {
                 Console.WriteLine("Saisie Incorrecte");
@@ -114,7 +119,7 @@ namespace ExamCsharp
         public static void NbHabitants(List<Ville> villes)
         {
             int habitants = 0;
-
+            //calcul habitants avec un foreach et formatage pour la sortie
             foreach (Ville v in villes)
             {
                 habitants += v.habitans;
