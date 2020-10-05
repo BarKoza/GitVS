@@ -21,6 +21,7 @@ namespace ExamCsharp
                 }
                 else if (choix == "2")
                 {
+                    Console.WriteLine("Liste des Villes créees");
                     Affiche(listeVilles);
                 }
                 else
@@ -66,8 +67,7 @@ namespace ExamCsharp
             // construction du message
             string message;
             message = CreerMessage(v);
-            // affichage du message
-            Console.WriteLine(message);
+ 
             return v;
         }
 
@@ -75,7 +75,7 @@ namespace ExamCsharp
         {
             string result;
 
-            result = "Votre Ville s'appelle " + v.nom + " , le C.P est " + v.cp + ", et elle est peuplée de " + v.habitans + " habitans.";
+            result = "Nom : " + v.nom + ", Code Postal: " + v.cp + "\nNombre d'habitants: " + v.habitans + "\n---------------------";
 
             return result;
         }
