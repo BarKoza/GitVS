@@ -24,6 +24,10 @@ namespace ExamCsharp
                     Console.WriteLine("Liste des Villes créees");
                     Affiche(listeVilles);
                 }
+                else if (choix == "3")
+                {
+                    NbHabitants(listeVilles);
+                }
                 else
                 {
                     Console.WriteLine("Je n'ai pas compris");
@@ -36,6 +40,7 @@ namespace ExamCsharp
             Console.WriteLine("Que voulez-vous faire ?");
             Console.WriteLine("1. Creer une nouvelle ville");
             Console.WriteLine("2. Afficher la liste des villes");
+            Console.WriteLine("3. Afficher le nombre total d'habitants");
             string choix = Console.ReadLine();
             return choix;
         }
@@ -57,8 +62,7 @@ namespace ExamCsharp
             Ville v = new Ville();
 
             // demande du nom
-            Console.WriteLine("Nom :");
-            v.nom = Console.ReadLine();
+            v.nom = Demandeville("Nom:");
             // demande du code postal
             v.cp = DemandeEntier("Code Postal:");
             // demande nombre habitans
@@ -85,13 +89,38 @@ namespace ExamCsharp
             Console.WriteLine(message);
             string entree;
             entree = Console.ReadLine();
-            int intValue;
-            while (!int.TryParse(entree, out intValue))
+            int Valeur;
+            while (!int.TryParse(entree, out Valeur) || Valeur <= 0)
             {
                 Console.WriteLine("Saisie Incorrecte");
                 entree = Console.ReadLine();
             }
-            return intValue;
+            return Valeur;
         }
+
+        public static string Demandeville(string message)
+        {
+            Console.WriteLine(message);
+            string entree;
+            entree = Console.ReadLine();
+            while (String.IsNullOrEmpty(entree))
+            {
+                Console.WriteLine("Saisie Incorrecte");
+                entree = Console.ReadLine();
+            }
+            return entree;
+        }
+
+        public static void NbHabitants(List<Ville> villes)
+        {
+            int habitants = 0;
+
+            foreach (Ville v in villes)
+            {
+                habitants += v.habitans;
+            }
+            Console.WriteLine("Nombre d'habitants Total : " + habitants.ToString("# ### ##0") + "\n");
+        }
+
     }
 }
